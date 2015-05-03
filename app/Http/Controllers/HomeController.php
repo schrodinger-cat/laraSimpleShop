@@ -1,5 +1,8 @@
 <?php namespace App\Http\Controllers;
 
+use Request;
+use Carbon\Carbon;
+
 class HomeController extends Controller {
 
 	/*
@@ -31,6 +34,41 @@ class HomeController extends Controller {
 	public function index()
 	{
 		return view('home');
+	}
+
+	/**
+	 * Вывод всех категорий товаров
+	 *
+	 * @return Response
+	 */
+	public function category()
+	{
+		return view('category/category');
+	}
+
+	/**
+	 * Добавление категории товаров
+	 *
+	 * @return Response
+	 */
+	public function createCategory()
+	{
+		return view('category/category_add');
+	}
+
+	public function storeCategory()
+	{
+		$input = Request::all();
+		$input['published_at'] = Carbon::now();
+
+		$cat = new Category;
+		$cat->cat_name = $input['cat_name'];
+		$cat->published_at = $input['published_at'];
+		$cat->save();
+
+		//Category::create($input);
+
+		return redirect('/admin/category');
 	}
 
 }

@@ -33,8 +33,26 @@
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="{{ url('/') }}">Home</a></li>
+					<li><a href="{{ url('/admin') }}">Home</a></li>
+
+					<li class="dropdown">
+						<a href="{{ url('/admin/category') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Категории магазина <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="{{ url('/admin/category') }}">Список категорий</a></li>
+							<li><a href="{{ url('/admin/category/add') }}">Добавить категорию</a></li>
+						</ul>
+					</li>
+
+					<li class="dropdown">
+						<a href="{{ url('/admin/category') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Товары магазина <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="{{ url('/admin/items') }}">Список товаров</a></li>
+							<li><a href="{{ url('/admin/item/add') }}">Добавить товар</a></li>
+						</ul>
+					</li>
 				</ul>
+
+
 
 				<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())

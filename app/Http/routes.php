@@ -13,7 +13,11 @@
 
 Route::get('/', 'WelcomeController@index');
 
-Route::get('home', 'HomeController@index');
+Route::get('admin', 'HomeController@index');
+Route::get('admin/category', 'HomeController@category');
+Route::get('admin/category/add', 'HomeController@createCategory');
+
+Route::post('admin/category', 'HomeController@storeCategory');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
